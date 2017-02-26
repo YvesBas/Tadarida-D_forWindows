@@ -397,7 +397,6 @@ bool DetecLaunch::lanceSox(int iserie,int nfi,int compteur)
     // a big file has to be cut off in the thread
     QString fichierWav = wavtravPath + "/f" + QString::number(compteur+1) + ".wav";
     QStringList  arguments;
-    // arguments << "-c" << "1" << "-d" << fichierWav << "trim" << "0" << QString::number(_recordSize*nfi) ;
     QString paraudio = "hw:1,0";
     if(!_audioName.isEmpty()) paraudio = QString("hw:") + _audioName;
     arguments << "-c" << "1" << "-t" << "alsa" << paraudio << fichierWav << "trim" << "0" << QString::number(_recordSize*nfi) ;
@@ -416,7 +415,6 @@ void DetecLaunch::showInfo(QString s,bool showTime,bool e,bool l)
 
 void DetecLaunch::detecInfoTreat(QString wavFile,int resu)
 {
-    //LogStream << "detecInfoTreat " << endl;
     if(resu)_nbTreatedFiles++; else _nbErrorFiles++;
     QString sresu;
     if(resu==1) sresu = "ok"; else sresu = "error";
